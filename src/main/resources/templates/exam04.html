@@ -7,8 +7,11 @@
 <body>
 	<h5>ユーザ登録</h5>
 	<form th:action="@{/ex04/input}" method="post" th:object="${userForm}">
+		<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red">エラー！</div>
 		名前：<input type="text" name="name" th:field="*{name}"><br>
+		<div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color:red">エラー！</div>
 		年齢：<input type="text" name="age" th:field="*{age}"><br>
+		<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" style="color:red">エラー！</div>
 		コメント：<br>
 		<textarea rows="10" cols="30" name="comment" th:field="*{comment}"></textarea><br>
 		<button>登録</button>
