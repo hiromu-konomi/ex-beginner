@@ -16,7 +16,7 @@ public class MemberService {
 	@Autowired
 	private MemberRepository repository;
 	
-	public List<Member> findBy(String likeName) {
-		return repository.findBy(likeName);
+	public List<Member> findBy(String name) {
+		return repository.findBy(name);
 	}
 }

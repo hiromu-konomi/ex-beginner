@@ -19,17 +19,14 @@ public class MemberRepository {
 
 	private static final RowMapper<Member> MEMBER_ROW_MAPPER = (rs, i) -> {
 		Member member = new Member();
-		member.setId(rs.getInt("id"));
 		member.setName(rs.getString("name"));
-		member.setAge(rs.getInt("age"));
-		member.setDep_id(rs.getInt("dep_id"));
 		return member;
 	};
 
-	public List<Member> findBy(String likeName) {
-		String sql = "SELECT name FROM members WHERE name LIKE '%ロー%' ORDER BY id";
-		SqlParameterSource param = new MapSqlParameterSource().addValue("likeName", likeName);
-		List<Member> memberList = template.query(sql, param, MEMBER_ROW_MAPPER);
-		return memberList;
+	public List<Member> findBy(String name) {
+		String sql = "SELECT name FROM members WHERE name LIKE :name ";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("name", "%" + name + "%");
+		List<Member> nameList = template.query(sql, param, MEMBER_ROW_MAPPER);
+		return nameList;
 	}
 }
