@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h5>ユーザ登録</h5>
-	<form action="@{/ex04/input}" method="post" th:object="${user}">
+	<form th:action="@{/ex04/input}" method="post" th:object="${userForm}">
 		名前：<input type="text" name="name" th:field="*{name}"><br>
 		年齢：<input type="text" name="age" th:field="*{age}"><br>
 		コメント：<br>
